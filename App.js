@@ -5,7 +5,7 @@ import RootNavigator from './src/navigators/RootNavigator';
 
 export default function App() {
   return (
-    <NavigationContainer theme={DarkTheme}>
+    <NavigationContainer>
       <RootNavigator />
     </NavigationContainer>
   );

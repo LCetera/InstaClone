@@ -13,30 +13,13 @@ const NewsScreen = () => {
     return <Text>Loading...</Text>;
   }
   return (
-    <View style={{ backgroundColor: 'white', height: '100%' }}>
+    <View style={styles.rootContainer}>
       <StatusBar></StatusBar>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}
-      >
-        <View
-          style={{
-            paddingHorizontal: 15,
-            alignItems: 'center',
-          }}
-        >
-          <Text style={{ fontFamily: 'Lobster', fontSize: 30 }}>Instagram</Text>
+      <View style={styles.instagramContainer}>
+        <View style={styles.leftPartOfInstagram}>
+          <Text style={styles.leftInstagramText}>Instagram</Text>
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingHorizontal: 15,
-          }}
-        >
+        <View style={styles.rightPartOfInstagram}>
           <AntDesign name="plussquareo" size={24} color="black" />
           <AntDesign name="hearto" size={24} color="black" />
           <Feather name="send" size={24} color="black" />
@@ -45,5 +28,30 @@ const NewsScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  rootContainer: {
+    backgroundColor: 'white',
+    height: '100%',
+  },
+  instagramContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  leftPartOfInstagram: {
+    paddingHorizontal: 15,
+    alignItems: 'center',
+  },
+  leftInstagramText: {
+    fontFamily: 'Lobster',
+    fontSize: 30,
+  },
+  rightPartOfInstagram: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 15,
+  },
+});
 
 export default NewsScreen;

@@ -30,12 +30,11 @@ const SearchScreen = () => {
   }, []);
 
   return (
-    <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+    <View style={styles.rootContainer}>
       <SearchBoxComponent></SearchBoxComponent>
       <FlatList
         isLoading={isLoading}
         numColumns={3}
-        ListEmptyComponent={<Text style={{ fontSize: 48 }}>Empty</Text>}
         data={albums}
         renderItem={({ item }) => {
           return <ImageComponent imageURI={item.thumbnailUrl} />;
@@ -44,5 +43,13 @@ const SearchScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  rootContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+});
 
 export default SearchScreen;

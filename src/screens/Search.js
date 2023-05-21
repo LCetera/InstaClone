@@ -4,6 +4,7 @@ import { useTheme } from '@react-navigation/native';
 
 import ImageComponent from '../components/ImageComponent';
 import { getPhotos } from '../services/photos';
+import SearchBoxComponent from '../components/SearchBoxComponent';
 
 const SearchScreen = () => {
   const [albums, setAlbums] = useState([]);
@@ -30,7 +31,7 @@ const SearchScreen = () => {
 
   return (
     <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-      <Text>Search</Text>
+      <SearchBoxComponent></SearchBoxComponent>
       <FlatList
         isLoading={isLoading}
         numColumns={3}

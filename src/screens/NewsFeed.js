@@ -1,13 +1,37 @@
-import { View, Text, StyleSheet, StatusBar } from 'react-native';
-import { useTheme } from '@react-navigation/native';
+import { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, StatusBar, FlatList } from 'react-native';
 import { useFonts } from 'expo-font';
-import { AntDesign, Feather } from '@expo/vector-icons';
+
+import { getPhotos } from '../services/photos';
+import PostComponent from '../components/PostComponent';
+import TopContainerComponent from '../components/TopContainerComponent';
 
 const NewsScreen = () => {
-  const { colors } = useTheme();
   const [fontsLoaded] = useFonts({
     Lobster: require('../../assets/fonts/Lobster-Regular.ttf'),
   });
+
+  const [albums, setAlbums] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
+
+  useEffect(() => {
+    async function fetchAlbums() {
+      setLoading(true);
+      getPhotos()
+        .then((newAlbums) => {
+          setAlbums(newAlbums);
+        })
+        .catch(() => {
+          setError(true);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+
+    fetchAlbums();
+  }, []);
 
   if (!fontsLoaded) {
     return <Text>Loading...</Text>;
@@ -15,16 +39,14 @@ const NewsScreen = () => {
   return (
     <View style={styles.rootContainer}>
       <StatusBar></StatusBar>
-      <View style={styles.instagramContainer}>
-        <View style={styles.leftPartOfInstagram}>
-          <Text style={styles.leftInstagramText}>Instagram</Text>
-        </View>
-        <View style={styles.rightPartOfInstagram}>
-          <AntDesign name="plussquareo" size={24} color="black" />
-          <AntDesign name="hearto" size={24} color="black" />
-          <Feather name="send" size={24} color="black" />
-        </View>
-      </View>
+      <TopContainerComponent></TopContainerComponent>
+      <FlatList
+        isLoading={isLoading}
+        data={albums}
+        renderItem={({ item }) => {
+          return <PostComponent imageURI={item.url} title={item.title} />;
+        }}
+      />
     </View>
   );
 };
@@ -33,24 +55,6 @@ const styles = StyleSheet.create({
   rootContainer: {
     backgroundColor: 'white',
     height: '100%',
-  },
-  instagramContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  leftPartOfInstagram: {
-    paddingHorizontal: 15,
-    alignItems: 'center',
-  },
-  leftInstagramText: {
-    fontFamily: 'Lobster',
-    fontSize: 30,
-  },
-  rightPartOfInstagram: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 15,
   },
 });
 

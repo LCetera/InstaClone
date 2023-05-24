@@ -1,10 +1,10 @@
 import { View, TextInput, StyleSheet } from 'react-native';
-import Ionic from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';
 
 const SearchBoxComponent = () => {
   return (
     <View style={styles.rootContainer}>
-      <Ionic name="search" style={styles.icon} />
+      <Ionicons name="search" style={styles.icon} />
       <TextInput
         placeholder="Search"
         placeholderTextColor="#909090"

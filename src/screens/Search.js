@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-import { useTheme } from '@react-navigation/native';
+import { View, StyleSheet, FlatList } from 'react-native';
 
 import ImageComponent from '../components/ImageComponent';
 import { getPhotos } from '../services/photos';

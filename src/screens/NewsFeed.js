@@ -42,6 +42,7 @@ const NewsScreen = () => {
       <TopContainerComponent></TopContainerComponent>
       <FlatList
         isLoading={isLoading}
+        isError={isError}
         data={albums}
         renderItem={({ item }) => {
           return <PostComponent imageURI={item.url} title={item.title} />;

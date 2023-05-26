@@ -33,6 +33,7 @@ const SearchScreen = () => {
       <SearchBoxComponent></SearchBoxComponent>
       <FlatList
         isLoading={isLoading}
+        isError={isError}
         numColumns={3}
         data={albums}
         renderItem={({ item }) => {

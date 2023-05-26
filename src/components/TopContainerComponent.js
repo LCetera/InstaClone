@@ -8,17 +8,9 @@ const TopContainerComponent = () => {
         <Text style={styles.leftInstagramText}>Instagram</Text>
       </View>
       <View style={styles.rightPartOfInstagram}>
-        <AntDesign
-          name="plussquareo"
-          style={{ paddingRight: 5, fontSize: 24 }}
-          color="black"
-        />
-        <AntDesign
-          name="hearto"
-          style={{ paddingRight: 5, fontSize: 24 }}
-          color="black"
-        />
-        <Feather name="send" size={24} color="black" />
+        <AntDesign name="plussquareo" style={styles.icons} />
+        <AntDesign name="hearto" style={styles.icons} />
+        <Feather name="send" style={styles.icons} />
       </View>
     </View>
   );
@@ -42,6 +34,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 15,
+  },
+  icons: {
+    paddingRight: 5,
+    fontSize: 24,
+    color: 'black',
   },
 });
 

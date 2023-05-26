@@ -7,7 +7,7 @@ const imageWidth = dimension.width;
 export default PostComponent = ({ imageURI, title }) => (
   <View>
     <View style={styles.userContainer}>
-      <EvilIcons name="user" size={48} color="black" />
+      <EvilIcons name="user" style={styles.userIcon} />
       <Text style={styles.userText}>Clark Ederman</Text>
     </View>
 
@@ -19,17 +19,9 @@ export default PostComponent = ({ imageURI, title }) => (
     />
     <View style={styles.postIconsContainer}>
       <View style={styles.postLeftIconsContainer}>
-        <AntDesign
-          name="hearto"
-          style={styles.postLeftIconsStyle}
-          color="black"
-        />
-        <Ionicons
-          name="chatbubble-outline"
-          style={styles.postLeftIconsStyle}
-          color="black"
-        />
-        <Feather name="send" style={styles.postLeftIconsStyle} color="black" />
+        <AntDesign name="hearto" style={styles.postLeftIconsStyle} />
+        <Ionicons name="chatbubble-outline" style={styles.postLeftIconsStyle} />
+        <Feather name="send" style={styles.postLeftIconsStyle} />
       </View>
       <Feather name="bookmark" style={styles.postRightIconsStyle} />
     </View>
@@ -38,12 +30,7 @@ export default PostComponent = ({ imageURI, title }) => (
       <Text style={styles.postTextStyle}>{title}</Text>
       <Text style={styles.postComment}>Zobacz wszystkie komentarze: 80</Text>
     </View>
-    <View
-      style={{
-        borderBottomColor: 'black',
-        borderBottomWidth: 1,
-      }}
-    />
+    <View style={styles.line} />
   </View>
 );
 
@@ -57,6 +44,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingLeft: 5,
     paddingTop: 5,
+  },
+  userIcon: {
+    fontSize: 48,
+    color: 'black',
   },
   postIconsContainer: {
     flexDirection: 'row',
@@ -72,6 +63,7 @@ const styles = StyleSheet.create({
   postLeftIconsStyle: {
     paddingRight: 5,
     fontSize: 20,
+    color: 'black',
   },
   postRightIconsStyle: {
     fontSize: 20,
@@ -86,5 +78,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     opacity: 0.4,
     paddingVertical: 2,
+  },
+  line: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
   },
 });

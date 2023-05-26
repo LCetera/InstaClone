@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer, DarkTheme } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import RootNavigator from './src/navigators/RootNavigator';
 
@@ -10,11 +9,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  rootContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-  },
-});

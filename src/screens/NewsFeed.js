@@ -1,16 +1,11 @@
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, StatusBar, FlatList } from 'react-native';
-import { useFonts } from 'expo-font';
+import { View, StyleSheet, StatusBar, FlatList } from 'react-native';
 
 import { getPhotos } from '../services/photos';
 import PostComponent from '../components/PostComponent';
 import TopContainerComponent from '../components/TopContainerComponent';
 
 const NewsScreen = () => {
-  const [fontsLoaded] = useFonts({
-    Lobster: require('../../assets/fonts/Lobster-Regular.ttf'),
-  });
-
   const [albums, setAlbums] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
@@ -33,9 +28,6 @@ const NewsScreen = () => {
     fetchAlbums();
   }, []);
 
-  if (!fontsLoaded) {
-    return <Text>Loading...</Text>;
-  }
   return (
     <View style={styles.rootContainer}>
       <StatusBar></StatusBar>

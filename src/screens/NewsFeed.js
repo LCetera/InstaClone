@@ -1,33 +1,10 @@
-import { useEffect, useState } from 'react';
 import { View, StyleSheet, StatusBar, FlatList } from 'react-native';
-
-import { getPhotos } from '../services/photos';
 import PostComponent from '../components/PostComponent';
 import TopContainerComponent from '../components/TopContainerComponent';
+import { useFetch } from '../hooks/useFetch';
 
 const NewsScreen = () => {
-  const [albums, setAlbums] = useState([]);
-  const [isLoading, setLoading] = useState(false);
-  const [isError, setError] = useState(false);
-
-  useEffect(() => {
-    async function fetchAlbums() {
-      setLoading(true);
-      getPhotos()
-        .then((newAlbums) => {
-          setAlbums(newAlbums);
-        })
-        .catch(() => {
-          setError(true);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
-
-    fetchAlbums();
-  }, []);
-
+  const { albums, isLoading, isError } = useFetch();
   return (
     <View style={styles.rootContainer}>
       <StatusBar></StatusBar>

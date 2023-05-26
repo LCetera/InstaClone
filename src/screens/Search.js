@@ -1,32 +1,10 @@
-import { useEffect, useState } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
-
 import ImageComponent from '../components/ImageComponent';
-import { getPhotos } from '../services/photos';
 import SearchBoxComponent from '../components/SearchBoxComponent';
+import { useFetch } from '../hooks/useFetch';
 
 const SearchScreen = () => {
-  const [albums, setAlbums] = useState([]);
-  const [isLoading, setLoading] = useState(false);
-  const [isError, setError] = useState(false);
-
-  useEffect(() => {
-    async function fetchAlbums() {
-      setLoading(true);
-      getPhotos()
-        .then((newAlbums) => {
-          setAlbums(newAlbums);
-        })
-        .catch(() => {
-          setError(true);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
-
-    fetchAlbums();
-  }, []);
+  const { albums, isLoading, isError } = useFetch();
 
   return (
     <View style={styles.rootContainer}>

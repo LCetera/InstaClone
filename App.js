@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import RootNavigator from './src/navigators/RootNavigator';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,11 +23,16 @@ export default function App() {
   }
 
   return (
-    <>
+    <View onLayout={onLayoutRootView} style={styles.mainView}>
       <NavigationContainer>
         <RootNavigator />
       </NavigationContainer>
-      <View onLayout={onLayoutRootView}></View>
-    </>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  mainView: {
+    flex: 1,
+  },
+});
